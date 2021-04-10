@@ -1,4 +1,4 @@
-package com.example.sws.s06.inMem;
+package com.example.sws.s06;
 
 import java.util.Collection;
 import java.util.List;
