@@ -1,13 +1,13 @@
-package com.example.sws.s09;
+package com.example.sws.s10;
 
-//import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-// !!! I'm intentionally using the deprecated NoOpPasswordEncoder !!!
-@SuppressWarnings("deprecation")
-//@Configuration
+import com.example.sws.s09.JpaUserDetailsService;
+
+@Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private JpaUserDetailsService svc;
 
@@ -17,6 +17,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(svc).passwordEncoder(NoOpPasswordEncoder.getInstance());
+        auth.userDetailsService(svc).passwordEncoder(new BCryptPasswordEncoder());
     }
 }

@@ -8,7 +8,7 @@ create table users (
 );
 
 -- {bcrypt}
--- insert into users (username, password) values('tom', '$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W');
+insert into users (username, password) values('tom', '$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W');
 
 -- {noop}
-insert into users (username, password) values('tom', 'password');
+-- insert into users (username, password) values('tom', 'password');
