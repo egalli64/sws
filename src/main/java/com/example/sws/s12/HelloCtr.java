@@ -14,16 +14,19 @@ public class HelloCtr {
 
     @GetMapping("/s12/hello1")
     public String hello(Model model) {
-        log.traceEntry("hello");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("name", auth.getName());
+        String name = auth.getName();
+        log.trace("Authenticated in hello1 as " + name);
+        model.addAttribute("name", name);
+
         return "/s12/hello";
     }
 
     @GetMapping("/s12/hello2")
     public String hello(Model model, Authentication auth) {
-        log.traceEntry("hello2");
-        model.addAttribute("name", auth.getName());
+        String name = auth.getName();
+        log.trace("Authenticated in hello2 as " + name);
+        model.addAttribute("name", name);
         return "/s12/hello";
     }
 }
