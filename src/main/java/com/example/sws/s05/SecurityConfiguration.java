@@ -13,21 +13,24 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 //@Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     /**
-     * Close to WebSecurityConfigurerAdapter standard implementation
-     * 
-     * _but_ no Spring login form, the browser default is used instead
-     * 
-     * use the "permitAll" variation to disable authorization check
+     * Variations on WebSecurityConfigurerAdapter standard implementation
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic();
+        // default configuration
+//        http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
+
+        /*
+         * when no formLogin() is specified no Spring login form
+         * 
+         * the browser default is used instead _and_ no login / logout pages available
+         */
 
         // !!! Useless - basic HTTP authentication is used but any request by anyone is authorized !!!
-        // http.authorizeRequests().anyRequest().permitAll();
+//        http.authorizeRequests().anyRequest().permitAll().and().httpBasic();
 
         // default behavior, any request should be authenticated
-        http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
     }
 
     @Override
