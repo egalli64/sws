@@ -1,7 +1,7 @@
 package com.example.sws.s04;
 
 import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
@@ -10,7 +10,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 // !!! I'm intentionally using the deprecated NoOpPasswordEncoder !!!
 @SuppressWarnings("deprecation")
-//@Configuration
+@Configuration
 public class SecurityConfiguration {
     @Bean
     public UserDetailsService userDetailsService() {
