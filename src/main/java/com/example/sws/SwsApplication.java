@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SwsApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SwsApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(SwsApplication.class, args);
+    }
 }
