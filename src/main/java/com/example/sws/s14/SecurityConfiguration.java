@@ -1,4 +1,4 @@
-package com.example.sws.s13;
+package com.example.sws.s14;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,16 +17,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         var manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("tom") //
                 .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
-                .authorities("read").build());
+                .authorities("ROLE_USER").build());
         manager.createUser(User.withUsername("bob") //
                 .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
-                .authorities("write").build());
+                .authorities("ROLE_ADMIN").build());
         manager.createUser(User.withUsername("kim") //
                 .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
-                .authorities("update").build());
+                .authorities("ROLE_ADMIN", "ROLE_USER").build());
         manager.createUser(User.withUsername("amy") //
                 .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
-                .authorities("read", "update").build());
+                .authorities("ROLE_GUEST").build());
         return manager;
     }
 
@@ -38,11 +38,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // Spring Expression Language for complex rules
-        String spel = "hasAuthority('read') and !hasAuthority('update')";
+        String spel = "hasRole('USER') and !hasRole('ADMIN')";
 
         http.authorizeRequests().anyRequest() //
-//                .hasAuthority("read") //
-//                .hasAnyAuthority("read", "write") //
+//                .hasRole("USER") //
+//                .hasAnyRole("ADMIN", "USER") //
                 .access(spel) //
                 .and().formLogin().and().httpBasic();
     }
