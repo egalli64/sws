@@ -1,4 +1,4 @@
-package com.example.sws.s14;
+package com.example.sws.s15;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,13 +37,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Spring Expression Language for complex rules
-        String spel = "hasRole('USER') and !hasRole('ADMIN')";
 
-        http.authorizeRequests().anyRequest() //
-//                .hasRole("USER") //
-//                .hasAnyRole("ADMIN", "USER") //
-                .access(spel) //
+        http.authorizeRequests() //
+                .mvcMatchers("/hello.html").permitAll() //
+                .mvcMatchers("/admin/hello.html").hasRole("ADMIN") //
+                .anyRequest().authenticated() //
                 .and().formLogin().and().httpBasic();
     }
 }
