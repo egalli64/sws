@@ -41,7 +41,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests() //
                 .mvcMatchers("/hello.html").permitAll() //
                 .mvcMatchers("/admin/hello.html").hasRole("ADMIN") //
-                .anyRequest().authenticated() //
+                .mvcMatchers("/user/**").hasRole("USER") //
+                .mvcMatchers("/info/{id:[0-9]*}").authenticated() //
+                .anyRequest().denyAll() //
                 .and().formLogin().and().httpBasic();
     }
 }
