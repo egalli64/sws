@@ -1,5 +1,0 @@
-{"properties": [{
-  "name": "authentication.id",
-  "type": "java.lang.String",
-  "description": "alternative authentication"
-}]}
