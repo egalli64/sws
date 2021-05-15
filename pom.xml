@@ -13,5 +13,6 @@
 
     <modules>
         <module>sws02</module>
+        <module>sws04</module>
     </modules>
 </project>
