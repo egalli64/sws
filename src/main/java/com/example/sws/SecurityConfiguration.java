@@ -1,4 +1,4 @@
-package com.example.sws.s04;
+package com.example.sws;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
