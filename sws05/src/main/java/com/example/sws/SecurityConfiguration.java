@@ -1,4 +1,4 @@
-package com.example.sws.s05;
+package com.example.sws;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -21,9 +21,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //        http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
 
         /*
-         * when no formLogin() is specified no Spring login form
+         * when no formLogin() is specified 
          * 
-         * the browser default is used instead _and_ no login / logout pages available
+         * no Spring login form, the browser default is used instead
+         * 
+         * _and_ no login / logout pages available
          */
 
         // !!! Useless - basic HTTP authentication is used but any request by anyone is authorized !!!
