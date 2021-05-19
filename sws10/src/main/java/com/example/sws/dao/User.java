@@ -1,4 +1,4 @@
-package com.example.sws.s08;
+package com.example.sws.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
