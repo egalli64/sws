@@ -1,10 +1,12 @@
-package com.example.sws.s08;
+package com.example.sws;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.sws.dao.User;
 
 @SuppressWarnings("serial")
 public class SecurityUser implements UserDetails {

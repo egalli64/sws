@@ -1,4 +1,4 @@
-package com.example.sws.s09;
+package com.example.sws;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,8 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
-import com.example.sws.s08.SecurityUser;
-import com.example.sws.s08.UserRepository;
+import com.example.sws.dao.UserRepository;
 
 @Service
 public class JpaUserDetailsService implements UserDetailsManager {

@@ -10,7 +10,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.example.sws.s09.JpaUserDetailsService;
+import com.example.sws.JpaUserDetailsService;
 
 @Component
 public class MyAuthenticationProvider implements AuthenticationProvider {
@@ -26,9 +26,9 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
-        UserDetails u = uds.loadUserByUsername(username);
-        if (pe.matches(password, u.getPassword())) {
-            return new UsernamePasswordAuthenticationToken(username, password, u.getAuthorities());
+        UserDetails ud = uds.loadUserByUsername(username);
+        if (pe.matches(password, ud.getPassword())) {
+            return new UsernamePasswordAuthenticationToken(username, password, ud.getAuthorities());
         } else {
             throw new BadCredentialsException("Failure");
         }
