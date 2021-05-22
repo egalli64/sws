@@ -19,5 +19,6 @@
         <module>sws08</module>
         <module>sws10</module>
         <module>sws11</module>
+        <module>sws13</module>
     </modules>
 </project>
