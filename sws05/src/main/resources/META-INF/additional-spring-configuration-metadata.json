@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "custom.security.configuration",
+  "type": "java.lang.String",
+  "description": "'default', 'useless' of 'noForm' setting"
+}]}
