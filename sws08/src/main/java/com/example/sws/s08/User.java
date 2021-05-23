@@ -17,7 +17,6 @@ public class User {
 
     private String username;
     private String password;
-    private boolean admin;
 
     public User() {
     }
@@ -51,16 +50,8 @@ public class User {
         this.password = password;
     }
 
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
     @Override
     public String toString() {
-        return "User [id=" + id + ", username=" + username + ", password=" + password + ", admin=" + admin + "]";
+        return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
     }
 }
