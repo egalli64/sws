@@ -1,4 +1,4 @@
-package com.example.sws.s15;
+package com.example.sws;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,6 @@ public class InfoCtr {
     @GetMapping("/info/{id}")
     public String hello(Model model, @PathVariable String id) {
         model.addAttribute("id", id);
-        return "/s15/info";
+        return "/info";
     }
 }
