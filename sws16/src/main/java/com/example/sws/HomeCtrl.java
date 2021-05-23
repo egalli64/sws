@@ -1,4 +1,4 @@
-package com.example.sws.s16;
+package com.example.sws;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

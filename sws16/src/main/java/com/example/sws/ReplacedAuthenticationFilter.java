@@ -1,4 +1,4 @@
-package com.example.sws.s16;
+package com.example.sws;
 
 import java.io.IOException;
 
