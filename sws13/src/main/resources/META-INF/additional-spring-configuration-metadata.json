@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "custom.security.configuration",
+  "type": "java.lang.String",
+  "description": "authorize read, readWrite, or readNotUpdate"
+}]}

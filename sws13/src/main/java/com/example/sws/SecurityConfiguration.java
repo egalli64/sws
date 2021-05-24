@@ -1,5 +1,8 @@
 package com.example.sws;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -12,6 +15,11 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    private static final Logger log = LogManager.getLogger(SecurityConfiguration.class);
+
+    @Value("${custom.security.configuration}")
+    private String customSecurityConfiguration;
+
     @Bean
     public UserDetailsService uds() {
         var manager = new InMemoryUserDetailsManager();
@@ -37,13 +45,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Spring Expression Language for complex rules
-        String spel = "hasAuthority('read') and !hasAuthority('update')";
+        log.traceEntry("custom.security.configuration set to {}", customSecurityConfiguration);
+        var any = http.authorizeRequests().anyRequest();
 
-        http.authorizeRequests().anyRequest() //
-//                .hasAuthority("read") //
-//                .hasAnyAuthority("read", "write") //
-                .access(spel) //
-                .and().formLogin().and().httpBasic();
+        switch (customSecurityConfiguration) {
+        case "readWrite":
+            any.hasAnyAuthority("read", "write");
+            break;
+        case "readNotUpdate":
+            // Spring Expression Language for complex rules
+            any.access("hasAuthority('read') and !hasAuthority('update')");
+            break;
+        default:
+            any.hasAuthority("read");
+            break;
+        }
+
+        http.formLogin().and().httpBasic();
     }
 }
