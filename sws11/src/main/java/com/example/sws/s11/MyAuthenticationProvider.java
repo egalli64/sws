@@ -22,7 +22,7 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
         var udm = new InMemoryUserDetailsManager();
         udm.createUser(User.withUsername("tom") //
                 .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
-                .authorities("user").build());
+                .authorities("read").build());
 
         this.uds = udm;
         this.pe = new BCryptPasswordEncoder();

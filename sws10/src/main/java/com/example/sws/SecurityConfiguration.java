@@ -14,7 +14,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         var manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("tom") //
                 .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
-                .authorities("user").build());
+                .authorities("read").build());
 
         auth.userDetailsService(manager).passwordEncoder(new BCryptPasswordEncoder());
     }

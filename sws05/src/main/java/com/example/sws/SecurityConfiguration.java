@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         var manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("tom").password("password").authorities("plain").build());
+        manager.createUser(User.withUsername("tom").password("password").authorities("read").build());
 
         auth.userDetailsService(manager).passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
