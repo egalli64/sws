@@ -24,9 +24,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         manager.createUser(User.withUsername("kim") //
                 .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
                 .authorities("ROLE_ADMIN", "ROLE_USER").build());
-        manager.createUser(User.withUsername("amy") //
-                .password("$2a$10$BsXAGpkEe6YRV2KbJ996ReSkflDfZgPxpaDq/6B7Y15nVBT6yuo3W") //
-                .authorities("ROLE_GUEST").build());
         return manager;
     }
 
@@ -39,7 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests() //
-                .mvcMatchers("/hello.html").permitAll() //
+                .mvcMatchers("/").permitAll() //
+                .mvcMatchers("/index.html").permitAll() //
                 .mvcMatchers("/admin/hello.html").hasRole("ADMIN") //
                 .mvcMatchers("/user/**").hasRole("USER") //
                 .mvcMatchers("/info/{id:[0-9]*}").authenticated() //
