@@ -25,7 +25,7 @@ public class ReplacedAuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        String authentication = ((HttpServletRequest) request).getHeader("Authorization");
+        String authentication = ((HttpServletRequest) request).getHeader("Authentication");
         log.trace("authentication: " + authentication);
         if (authenticationId.equals(authentication)) {
             chain.doFilter(request, response);
