@@ -9,7 +9,8 @@
 <body>
     <h1>Hello from Spring Security</h1>
     
-    <p>A CSRF protected <a href="/hello">hello page</a></p>
+    <p>A CSRF protected <a href="/hello?csrf=true">hello page</a></p>
+    <p>A <a href="/hello?csrf=false">hello page</a> with no CSRF protection</p>
 
     <p><a href="/logout">logout</a></p>
 </body>
