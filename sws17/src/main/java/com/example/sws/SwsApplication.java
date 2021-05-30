@@ -1,4 +1,4 @@
-package com.example.sws17;
+package com.example.sws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
